@@ -13,16 +13,18 @@ export function ChatMessage({ role, content }: ChatMessageProps) {
   return (
     <div
       className={cn(
-        "flex gap-3 p-4 rounded-lg animate-fade-in",
+        "flex gap-3 p-4 rounded-2xl animate-fade-in backdrop-blur-sm transition-all hover:scale-[1.01]",
         isUser
-          ? "bg-primary text-primary-foreground ml-auto max-w-[80%]"
-          : "bg-card max-w-[80%]"
+          ? "bg-gradient-to-br from-primary to-secondary text-primary-foreground ml-auto max-w-[80%] shadow-lg shadow-primary/20"
+          : "bg-gradient-to-br from-card to-card/80 max-w-[80%] border border-border/50 shadow-md"
       )}
     >
       <div
         className={cn(
-          "flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center",
-          isUser ? "bg-primary-foreground/20" : "bg-primary/10"
+          "flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all",
+          isUser 
+            ? "bg-primary-foreground/20 shadow-[0_0_10px_rgba(255,255,255,0.3)]" 
+            : "bg-gradient-to-br from-primary/20 to-secondary/20 shadow-[0_0_10px_rgba(30,180,200,0.2)]"
         )}
       >
         {isUser ? (

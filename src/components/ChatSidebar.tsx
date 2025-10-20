@@ -55,15 +55,19 @@ export function ChatSidebar({
   );
 
   return (
-    <Sidebar className="border-r">
-      <SidebarHeader className="p-4 border-b">
+    <Sidebar className="border-r border-sidebar-border bg-gradient-to-b from-sidebar-background to-sidebar-background/95">
+      <SidebarHeader className="p-4 border-b border-sidebar-border/50 bg-sidebar-accent/30">
         <div className="flex items-center gap-3">
-          <img src={dolphinLogo} alt="ChatFren" className="w-10 h-10" />
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary p-0.5 shadow-[0_0_20px_rgba(30,180,200,0.3)]">
+            <div className="w-full h-full rounded-full bg-sidebar-background flex items-center justify-center">
+              <img src={dolphinLogo} alt="ChatFren" className="w-6 h-6" />
+            </div>
+          </div>
           <div>
-            <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h2 className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               ChatFren
             </h2>
-            <p className="text-xs text-muted-foreground">AI Chat Assistant</p>
+            <p className="text-xs text-sidebar-foreground/70">AI Chat Assistant</p>
           </div>
         </div>
       </SidebarHeader>
@@ -71,7 +75,11 @@ export function ChatSidebar({
       <SidebarContent>
         <SidebarGroup>
           <div className="px-4 py-2">
-            <Button onClick={onNewChat} className="w-full" size="lg">
+            <Button 
+              onClick={onNewChat} 
+              className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-[0_0_20px_rgba(30,180,200,0.4)] transition-all" 
+              size="lg"
+            >
               <MessageSquarePlus className="mr-2 h-5 w-5" />
               New Chat
             </Button>
@@ -79,17 +87,22 @@ export function ChatSidebar({
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Chat Modes</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sidebar-foreground/80 font-semibold">Chat Modes</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {chatModes.map((mode) => {
                 const Icon = mode.icon;
+                const isActiveMode = currentMode === mode.id;
                 return (
                   <SidebarMenuItem key={mode.id}>
                     <SidebarMenuButton
                       onClick={() => onModeChange(mode.id)}
-                      isActive={currentMode === mode.id}
-                      className="w-full"
+                      isActive={isActiveMode}
+                      className={`w-full transition-all ${
+                        isActiveMode 
+                          ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border-l-2 border-primary shadow-[0_0_15px_rgba(30,180,200,0.2)]' 
+                          : 'hover:bg-sidebar-accent/50'
+                      }`}
                     >
                       <Icon className={`h-4 w-4 ${mode.color}`} />
                       <span>{mode.label}</span>
@@ -143,9 +156,9 @@ export function ChatSidebar({
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-4 border-t">
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Heart className="h-3 w-3 text-primary" />
+      <SidebarFooter className="p-4 border-t border-sidebar-border/50 bg-sidebar-accent/30">
+        <div className="flex items-center gap-2 text-xs text-sidebar-foreground/70">
+          <Heart className="h-3 w-3 text-primary animate-pulse" />
           <span>Made with Lovable Cloud</span>
         </div>
       </SidebarFooter>

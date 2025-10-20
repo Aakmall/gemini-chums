@@ -8,14 +8,14 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 215 25% 27%;
+    --background: 0 0% 100%;
+    --foreground: 210 50% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card: 195 100% 97%;
+    --card-foreground: 210 50% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover: 195 100% 97%;
+    --popover-foreground: 210 50% 20%;
 
     --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
@@ -23,40 +23,52 @@ All colors MUST be HSL.
     --secondary: 187 85% 53%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 195 60% 95%;
+    --muted-foreground: 200 20% 45%;
 
-    --accent: 199 89% 48%;
+    --accent: 180 100% 40%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 195 50% 88%;
+    --input: 195 50% 92%;
     --ring: 199 89% 48%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    --sidebar-background: 210 33% 99%;
-    --sidebar-foreground: 215 25% 27%;
-    --sidebar-primary: 199 89% 48%;
+    --sidebar-background: 200 100% 25%;
+    --sidebar-foreground: 180 100% 95%;
+    --sidebar-primary: 187 85% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 215 25% 27%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-accent: 200 80% 30%;
+    --sidebar-accent-foreground: 180 100% 95%;
+    --sidebar-border: 200 60% 20%;
+    --sidebar-ring: 187 85% 53%;
     
-    /* Custom ChatFren colors */
+    /* Ocean Theme Colors */
     --ocean-blue: 199 89% 48%;
     --ocean-teal: 187 85% 53%;
-    --ocean-deep: 200 98% 39%;
-    --chat-user-bg: 199 89% 48%;
-    --chat-assistant-bg: 0 0% 100%;
+    --ocean-deep: 200 100% 25%;
+    --ocean-light: 180 100% 85%;
+    --ocean-coral: 20 90% 65%;
+    --ocean-purple: 270 60% 60%;
     
-    /* Gradients */
+    /* Chat bubbles */
+    --chat-user-bg: 199 89% 48%;
+    --chat-assistant-bg: 195 100% 97%;
+    
+    /* Ocean Gradients */
     --gradient-ocean: linear-gradient(135deg, hsl(199 89% 48%), hsl(187 85% 53%));
-    --gradient-hero: linear-gradient(180deg, hsl(210 40% 98%), hsl(199 89% 95%));
+    --gradient-ocean-deep: linear-gradient(180deg, hsl(200 100% 25%), hsl(220 80% 15%));
+    --gradient-ocean-light: linear-gradient(135deg, hsl(195 100% 85%), hsl(180 100% 90%));
+    --gradient-bubble: linear-gradient(135deg, hsl(199 89% 48% / 0.1), hsl(187 85% 53% / 0.2));
+    --gradient-sidebar: linear-gradient(180deg, hsl(200 100% 25%), hsl(200 100% 20%));
+    
+    /* Shadows */
+    --shadow-ocean: 0 10px 40px -10px hsl(199 89% 48% / 0.3);
+    --shadow-glow: 0 0 30px hsl(187 85% 53% / 0.4);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,45 +76,57 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 215 28% 17%;
-    --foreground: 210 40% 98%;
+    --background: 220 25% 8%;
+    --foreground: 180 100% 95%;
 
-    --card: 215 28% 17%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 40% 12%;
+    --card-foreground: 180 100% 95%;
 
-    --popover: 215 28% 17%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 40% 12%;
+    --popover-foreground: 180 100% 95%;
 
-    --primary: 199 89% 48%;
+    --primary: 187 85% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 25% 27%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 215 25% 27%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 210 30% 18%;
+    --muted-foreground: 195 20% 65%;
 
-    --accent: 199 89% 48%;
+    --accent: 180 100% 40%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 25% 27%;
-    --input: 215 25% 27%;
-    --ring: 199 89% 48%;
+    --border: 210 30% 20%;
+    --input: 210 30% 18%;
+    --ring: 187 85% 53%;
     
-    --sidebar-background: 215 30% 13%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 199 89% 48%;
+    --sidebar-background: 200 100% 10%;
+    --sidebar-foreground: 180 100% 95%;
+    --sidebar-primary: 187 85% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 215 25% 27%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 215 25% 27%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-accent: 200 60% 15%;
+    --sidebar-accent-foreground: 180 100% 95%;
+    --sidebar-border: 200 50% 12%;
+    --sidebar-ring: 187 85% 53%;
+    
+    /* Ocean Theme Dark Mode */
+    --ocean-deep: 200 100% 10%;
+    --ocean-light: 180 80% 60%;
     
     --chat-user-bg: 199 89% 48%;
-    --chat-assistant-bg: 215 25% 27%;
+    --chat-assistant-bg: 210 40% 12%;
+    
+    /* Dark Mode Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(187 85% 53%), hsl(199 89% 48%));
+    --gradient-ocean-deep: linear-gradient(180deg, hsl(200 100% 10%), hsl(220 80% 8%));
+    --gradient-sidebar: linear-gradient(180deg, hsl(200 100% 10%), hsl(200 100% 8%));
+    
+    --shadow-ocean: 0 10px 40px -10px hsl(187 85% 53% / 0.4);
+    --shadow-glow: 0 0 30px hsl(187 85% 53% / 0.3);
   }
 }
 

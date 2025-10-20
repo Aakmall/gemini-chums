@@ -254,20 +254,28 @@ export default function Chat() {
           currentMode={chatMode}
         />
 
-        <div className="flex-1 flex flex-col">
-          <header className="h-16 border-b flex items-center px-4 bg-card">
+        <div className="flex-1 flex flex-col relative overflow-hidden">
+          {/* Animated ocean bubbles background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+            <div className="absolute w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-full blur-3xl animate-pulse" style={{ top: '10%', left: '20%', animationDuration: '4s' }} />
+            <div className="absolute w-40 h-40 bg-gradient-to-br from-secondary to-accent rounded-full blur-3xl animate-pulse" style={{ top: '60%', right: '15%', animationDuration: '6s', animationDelay: '1s' }} />
+            <div className="absolute w-24 h-24 bg-gradient-to-br from-accent to-primary rounded-full blur-3xl animate-pulse" style={{ bottom: '20%', left: '40%', animationDuration: '5s', animationDelay: '2s' }} />
+          </div>
+
+          <header className="h-16 border-b border-border/50 bg-background/80 backdrop-blur-md flex items-center px-4 relative z-10">
             <SidebarTrigger>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-primary/10">
                 <Menu className="h-5 w-5" />
               </Button>
             </SidebarTrigger>
             <div className="flex-1 text-center">
-              <h1 className="text-lg font-semibold">
+              <h1 className="text-lg font-semibold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 {conversations.find((c) => c.id === currentConversationId)?.title || "ChatFren"}
               </h1>
             </div>
             <Button
               variant="ghost"
+              className="hover:bg-destructive/10 hover:text-destructive"
               onClick={async () => {
                 await supabase.auth.signOut();
                 navigate("/login");
@@ -277,20 +285,34 @@ export default function Chat() {
             </Button>
           </header>
 
-          <ScrollArea className="flex-1 p-4">
+          <ScrollArea className="flex-1 p-4 relative z-10">
             {isLoadingMessages ? (
               <div className="flex items-center justify-center h-full">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <div className="flex flex-col items-center gap-3">
+                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                  <p className="text-sm text-muted-foreground">Loading messages...</p>
+                </div>
               </div>
             ) : messages.length === 0 ? (
               <div className="flex items-center justify-center h-full">
-                <div className="text-center space-y-4">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Welcome to ChatFren! 🐬
+                <div className="text-center space-y-4 p-8 rounded-3xl bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 shadow-xl">
+                  <div className="text-6xl mb-4 animate-bounce-in">🐬</div>
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                    Welcome to ChatFren!
                   </h2>
-                  <p className="text-muted-foreground">
-                    Start a conversation and I'll help you with anything you need!
+                  <p className="text-muted-foreground max-w-md">
+                    Dive into a conversation! I'm here to help you with anything you need.
                   </p>
+                  <div className="flex flex-wrap gap-2 justify-center mt-4">
+                    {["Ask me anything", "Tell me a joke", "Help me learn"].map((suggestion) => (
+                      <button
+                        key={suggestion}
+                        className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg text-sm"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
@@ -302,11 +324,21 @@ export default function Chat() {
                     content={message.content}
                   />
                 ))}
+                {isLoading && (
+                  <div className="flex items-center gap-2 text-muted-foreground p-4 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 max-w-fit animate-bounce-in">
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent" />
+                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-medium">Thinking...</span>
+                  </div>
+                )}
               </div>
             )}
           </ScrollArea>
 
-          <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+          <div className="border-t border-border/50 bg-background/80 backdrop-blur-md p-4 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+            </div>
+          </div>
         </div>
       </div>
     </SidebarProvider>
