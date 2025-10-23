@@ -1,0 +1,24 @@
+environment:
+  NODE_ENV: production
+  DATABASE_URL: jdbc:mysql://localhost:3306/mydb
+  API_KEY: your_api_key_here
+
+credentials:
+  username: your_username_here
+  password: your_password_here
+
+settings:
+  timeout: 30
+  retries: 3
+  logLevel: debug
+
+jobs:
+  build:
+    steps:
+      - script: ./scripts/build.sh
+  test:
+    steps:
+      - script: ./scripts/test.sh
+  deploy:
+    steps:
+      - script: ./scripts/deploy.sh
