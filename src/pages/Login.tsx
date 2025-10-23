@@ -83,7 +83,7 @@ export default function Login() {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">Email kauuu</Label>
               <Input
                 id="email"
                 type="email"
@@ -94,11 +94,11 @@ export default function Login() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Password kauu</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder="aduhjirrr"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
