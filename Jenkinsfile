@@ -12,28 +12,28 @@ pipeline {
 
   environment {
     APP_DIR = "."
-    DEPLOY_DIR = "/home/groupfox/public_html"
+    DEPLOY_DIR = "/home/DolphinGroup/public_html"
   }
 
   stages {
     stage("Checkout") {
-      steps { checkout scm }
+      steps {
+        checkout scm
+      }
     }
 
     stage("Generate .env") {
       steps {
         withCredentials([
-          string(credentialsId: "VITE_SUPABASE_URL",             variable: "SUPA_URL"),
+          string(credentialsId: "VITE_SUPABASE_PROJECT_ID", variable: "SUPA_PROJ_ID"),
           string(credentialsId: "VITE_SUPABASE_PUBLISHABLE_KEY", variable: "SUPA_KEY"),
-          string(credentialsId: "VITE_GEMINI_API_KEY",           variable: "GEMINI_KEY"),
-          string(credentialsId: "VITE_GEMINI_MODEL",             variable: "GEMINI_MODEL")
+          string(credentialsId: "VITE_SUPABASE_URL", variable: "SUPA_URL")
         ]) {
           sh '''
 cat > .env <<EOF
-VITE_SUPABASE_URL="\${SUPA_URL}"
-VITE_SUPABASE_PUBLISHABLE_KEY="\${SUPA_KEY}"
-VITE_GEMINI_API_KEY="\${GEMINI_KEY}"
-VITE_GEMINI_MODEL="\${GEMINI_MODEL:-gemini-1.5-flash}"
+VITE_SUPABASE_PROJECT_ID="${SUPA_PROJ_ID}"
+VITE_SUPABASE_PUBLISHABLE_KEY="${SUPA_KEY}"
+VITE_SUPABASE_URL="${SUPA_URL}"
 EOF
 '''
         }
