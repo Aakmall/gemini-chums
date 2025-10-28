@@ -54,7 +54,7 @@ EOF
   }
 
   post {
-    success { echo "✅ DEPLOY OK — Cek di port 8081" }
+    success { echo "✅ DEPLOY OK — Cek di port 8081 dolphin group" }
     failure { echo "❌ BUILD/DEPLOY GAGAL — Cek log di Jenkins" }
   }
 }
