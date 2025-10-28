@@ -298,7 +298,7 @@ export default function Chat() {
                 <div className="text-center space-y-4 p-8 rounded-3xl bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-border/50 shadow-xl">
                   <div className="text-6xl mb-4 animate-bounce-in">🐬</div>
                   <h2 className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                    Welcome to ChatFren!
+                    Selamat datang Indonesia
                   </h2>
                   <p className="text-muted-foreground max-w-md">
                     Dive into a conversation! I'm here to help you with anything you need.
