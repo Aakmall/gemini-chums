@@ -25,15 +25,15 @@ pipeline {
     stage("Generate .env") {
       steps {
         withCredentials([
-          string(credentialsId: "VITE_SUPABASE_PROJECT_ID", variable: "SUPA_PROJ_ID"),
-          string(credentialsId: "VITE_SUPABASE_PUBLISHABLE_KEY", variable: "SUPA_KEY"),
-          string(credentialsId: "VITE_SUPABASE_URL", variable: "SUPA_URL")
+          string(credentialsId: "supabase_project_id", variable: "SUPA_PROJ_ID"),
+          string(credentialsId: "supabase_public_key", variable: "SUPA_KEY"),
+          string(credentialsId: "supabase_url", variable: "SUPA_URL")
         ]) {
           sh '''
 cat > .env <<EOF
-VITE_SUPABASE_PROJECT_ID="${SUPA_PROJ_ID}"
-VITE_SUPABASE_PUBLISHABLE_KEY="${SUPA_KEY}"
-VITE_SUPABASE_URL="${SUPA_URL}"
+supabase_project_id="${SUPA_PROJ_ID}"
+supabase_public_key="${SUPA_KEY}"
+supabase_url="${SUPA_URL}"
 EOF
 '''
         }
