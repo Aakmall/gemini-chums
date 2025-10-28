@@ -54,7 +54,7 @@ EOF
   }
 
   post {
-    success { echo "✅ DEPLOY OK — Cek http://103.217.144.99:8081" }
+    success { echo "✅ DEPLOY OK — Cek " }
     failure { echo "❌ BUILD/DEPLOY GAGAL — Cek log di Jenkins" }
   }
 }
