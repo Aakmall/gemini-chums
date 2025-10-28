@@ -73,7 +73,7 @@ export default function Login() {
           </div>
           <div>
             <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Welcome to ChatFren
+              Welcome to ChatFren 1
             </CardTitle>
             <CardDescription className="mt-2">
               Your friendly AI chat companion
