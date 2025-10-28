@@ -31,9 +31,9 @@ pipeline {
         ]) {
           sh '''
 cat > .env <<EOF
-supabase_project_id="${SUPA_PROJ_ID}"
-supabase_public_key="${SUPA_KEY}"
-supabase_url="${SUPA_URL}"
+VITE_SUPABASE_PROJECT_ID="${SUPA_PROJ_ID}"
+VITE_SUPABASE_PUBLISHABLE_KEY="${SUPA_KEY}"
+VITE_SUPABASE_URL="${SUPA_URL}"
 EOF
 '''
         }
